@@ -1,26 +1,21 @@
-public class person <VariableType>{
+public class Person {
     private String name;
-    private String word;
-    private VariableType color;
+    private int age;
 
-    public void setColor (VariableType color){
-        this.color = color;
-    }
-    public VariableType getColor(){
-        return color;
+
+    Person(String name, int age){
+        this.name=name;
+        this.age=age;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
     public String getName(){
         return name;
     }
-
-    public void setWord(String word){
-        this.word = word;
+    public int getAge(){
+        return age;
     }
-    public String getWord(){
-        return word;
+
+    public String toString(){
+        return " [Name: " + name + " Age: "  + age + "]";
     }
 }
