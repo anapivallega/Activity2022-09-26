@@ -1,63 +1,84 @@
 import java.util.*;
 
 public class Main{
-    public static void main(String []args){
-        Scanner myObj = new Scanner(System.in);
-        List <String> anapi = new ArrayList <String>();
+    public static void main(String[]args) {
 
-        person <String> my = new person <String>();
-        my.setName("Anapi Vallega");
-        my.setWord("Hello!");
-        my.setColor("Black");
+        ArrayList<Person> person = new ArrayList<Person>();
 
-        anapi.add(my.getWord() + " My name is " + my.getName() + " my favorite color is " + my.getColor());
+        Scanner input = new Scanner(System.in);
 
+        System.out.print("Enter how many person you will input:");
+        int count = input.nextInt();
 
-        person <String> my1 = new person <String>();
-        my1.setName("Analou Vallega");
-        my1.setWord("Hello!");
-        my1.setColor("Red");
+        try {
 
-        anapi.add(my1.getWord() + " My name is " + my1.getName() + " my favorite color is " + my1.getColor());
+            if (count > 5) {
+                boolean y;
+                while (y = true) {
+                    System.out.println("-----------------------------------");
+                    System.out.println("Rerun its out of valid number:");
+                    System.out.println("-----------------------------------");
+                    System.out.println("wanna try again?");
+                    String yes = input.next();
+                    if (yes == "yes") {
+                        y = true;
+                        return;
+                    } else {
+                        y = false;
+                        break;
+                    }
+                }
 
+            } else {
 
+                String choice;
 
-        person <String> my2 = new person <String>();
-        my2.setName("Josepito Vallega");
-        my2.setWord("Hello!");
-        my2.setColor("Blue");
+                boolean t;
 
-        anapi.add(my2.getWord() + " My name is " + my2.getName() + " my favorite color is " + my2.getColor());
+                while (t = true) {
 
+                    System.out.println("A.Input:"); 
+                    System.out.println("B.Display");
+                    System.out.println("C.Exit");
 
+                    System.out.println("Enter your choice:");
 
+                    choice = input.next();
 
-        person <String> my3 = new person <String>();
-        my3.setName("Aine Joy Vallega");
-        my3.setWord("Hello!");
-        my3.setColor("Purple");
+                    if (choice == "A") {
+                        System.out.println("Name:");
+                        String name = input.next();
+                        System.out.println("Age:");
+                        int age = input.nextInt();
+                        person.add(new Person(name, age));
+                    }
 
-        anapi.add(my3.getWord() + " My name is " + my3.getName() + " my favorite color is " + my3.getColor());
+                    else if (choice == "B") {
 
-        
-        System.out.print("Enter an index :");
-        int num = myObj.nextInt ();
-        try{
-            if (num < 0){
-               myObj.close();
-               throw new personException(" Error please input valid index ");
+                        System.out.println(person);
+
+                    } else if (choice == "C") {
+                        System.out.println("Thank you Goodbye!");
+                     
+                     
+                                t = false;
+                                break;
+    
+                        
+
+                    } else if (choice != "A" || choice !="B" || choice !="C") {
+                       
+                        System.out.println("Be exact to the choices above when choosing an input!");
+                        System.out.println("");
+              
+                }
+
             }
-            if (num > 4){
-                myObj.close();
-                throw new personException(" Error your given number is out of bound ");
-            }
-            System.out.println(" Index number:" + num);
-            System.out.println(anapi.get(num));
 
-        } catch(personException e) {
-            System.out.print(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
         }
-        myObj.close();
 
     }
 }
